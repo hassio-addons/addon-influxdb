@@ -314,7 +314,7 @@ SOFTWARE.
 [discord-shield]: https://img.shields.io/discord/330944238910963714.svg
 [discord]: https://discord.gg/c5DvZ4e
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
-[forum]: https://community.home-assistant.io/t/community-hass-io-add-on-influxdb-media-server/54383?u=frenck
+[forum]: https://community.home-assistant.io/t/community-hass-io-add-on-influxdb/54491?u=frenck
 [frenck]: https://github.com/frenck
 [gitlabci-shield]: https://gitlab.com/hassio-addons/addon-influxdb/badges/master/pipeline.svg
 [gitlabci]: https://gitlab.com/hassio-addons/addon-influxdb/pipelines
