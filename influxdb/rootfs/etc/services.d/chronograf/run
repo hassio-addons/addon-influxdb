@@ -21,12 +21,7 @@ hass.log.info 'Starting Chronograf'
 options+=(--host="127.0.0.1")
 options+=(--port=8889)
 options+=(--bolt-path=/data/chronograf.db)
-
-if hass.config.true 'ssl'; then
-    options+=(--influxdb-url="https://localhost:8086")
-else
-    options+=(--influxdb-url="http://localhost:8086")
-fi
+options+=(--influxdb-url="http://localhost:8086")
 
 options+=(--influxdb-username="chronograf")
 options+=(--influxdb-password="${HASSIO_TOKEN}")
