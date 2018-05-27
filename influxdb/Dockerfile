@@ -6,22 +6,18 @@ FROM ${BUILD_FROM}
 ARG BUILD_ARCH=amd64
 
 RUN \
-    for key in \
-        05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \
-    do \
-        gpg \
-            --keyserver hkp://ha.pool.sks-keyservers.net:11371 \
-            --recv-keys "$key" \
-        || gpg \
-            --keyserver ha.pool.sks-keyservers.net \
-            --recv-keys "${key}" \
-        || gpg \
-            --keyserver pgp.mit.edu \
-            --recv-keys "${key}" \
-        || gpg \
-            --keyserver keyserver.pgp.com \
-            --recv-keys "${key}" ; \
-    done \
+    gpg \
+        --keyserver hkp://ha.pool.sks-keyservers.net:11371 \
+        --recv-keys "05CE15085FC09D18E99EFB22684A14CF2582E0C5" \
+    || gpg \
+        --keyserver ha.pool.sks-keyservers.net \
+        --recv-keys "05CE15085FC09D18E99EFB22684A14CF2582E0C5" \
+    || gpg \
+        --keyserver pgp.mit.edu \
+        --recv-keys "05CE15085FC09D18E99EFB22684A14CF2582E0C5" \
+    || gpg \
+        --keyserver keyserver.pgp.com \
+        --recv-keys "05CE15085FC09D18E99EFB22684A14CF2582E0C5" \
     \
     && ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
@@ -55,7 +51,7 @@ RUN \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         nginx=1.10.3-0ubuntu0.16.04.2 \
-        apache2-utils \
+        apache2-utils=2.4.18-2ubuntu3.8 \
     \
     && rm -rf /tmp/* \
     && rm -rf /root/.gnupg \
