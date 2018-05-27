@@ -1,0 +1,18 @@
+#!/usr/bin/with-contenv bash
+# ==============================================================================
+# Community Hass.io Add-ons: InfluxDB
+# Runs the Kapacitor Server
+# ==============================================================================
+# shellcheck disable=SC1091
+source /usr/lib/hassio-addons/base.sh
+
+# Wait for InfluxDB to become available
+s6-svwait -u -t 5000 /var/run/s6/services/influxdb
+
+# Wait another 2 seconds...
+sleep 2
+
+hass.log.info 'Starting the Kapacitor'
+
+# Run Kapacitor
+exec kapacitord

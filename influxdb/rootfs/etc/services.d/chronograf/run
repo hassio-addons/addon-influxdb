@@ -1,0 +1,42 @@
+#!/usr/bin/with-contenv bash
+# ==============================================================================
+# Community Hass.io Add-ons: InfluxDB
+# Runs the Chronograf Server
+# ==============================================================================
+# shellcheck disable=SC1091
+source /usr/lib/hassio-addons/base.sh
+
+# Wait for InfluxDB to become available
+s6-svwait -u -t 5000 /var/run/s6/services/influxdb
+
+# Wait for Kapacitor to become available
+s6-svwait -u -t 5000 /var/run/s6/services/kapacitor
+
+
+declare -a options
+
+hass.log.info 'Starting Chronograf'
+
+options+=(--host="127.0.0.1")
+options+=(--port=8889)
+options+=(--bolt-path=/data/chronograf.db)
+options+=(--influxdb-url="http://localhost:8086")
+options+=(--influxdb-username="chronograf")
+options+=(--influxdb-password="${HASSIO_TOKEN}")
+options+=(--kapacitor-url="http://localhost:9092")
+
+# Find the matching Chronograph log level
+case "$(hass.string.lower "$(hass.config.get 'log_level')")" in
+    all|trace|debug)
+        options+=(--log-level=debug)
+        ;;
+    info|notice)
+        options+=(--log-level=info)
+        ;;
+    warning|error|fatal|off)
+        options+=(--log-level=error)
+        ;;
+esac
+
+# Run Chronograf
+exec chronograf "${options[@]}"
