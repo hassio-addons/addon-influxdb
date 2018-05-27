@@ -23,6 +23,13 @@ It's useful for recording metrics, sensor data, events,
 and performing analytics. It exposes an HTTP API for client interaction and if
 often used in combination with Grafana to visualize the data.
 
+![Chronograf in the Home Assistant Frontend](images/screenshot.png)
+
+This add-on comes with Chronograf & Kapacitor pre-installed as well. Which
+gives you a nice InfluxDB admin interface for managing your users, databases,
+data retention settings, and lets you peek inside the database using the
+Data Explorer.
+
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
@@ -66,7 +73,14 @@ Example add-on configuration:
 
 ```json
 {
-  "log_level": "info"
+    "log_level": "info",
+    "username": "frenck",
+    "password": "allyourbasearebelongtous",
+    "auth": true,
+    "ssl": true,
+    "certfile": "fullchain.pem",
+    "keyfile": "privkey.pem",
+    "ipv6": true
 }
 ```
 
@@ -90,10 +104,105 @@ more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
 you are troubleshooting.
 
+### Option: `username`
+
+Username for authenticating with Chronograf / InfluxDB admin interface.
+Leaving the username field empty, will disable the authentication mechanism
+entirely.
+
+**Note**: _This is NOT the username for InfluxDB_
+
+### Option: `password`
+
+Password for authenticating with Chronograf / InfluxDB admin interface.
+
+**Note**: _This is NOT the password for InfluxDB_
+
+### Option: `auth`
+
+Enable or disable InfluxDB user authentication.
+
+**Note**: _Turning this off is NOT recommended!_
+
+### Option: `ssl`
+
+Enables/Disables SSL (HTTPS) on the web interface.
+Set it `true` to enable it, `false` otherwise.
+
+**Note**: _This does NOT activate SSL for InfluxDB, just the web interface_
+
+### Option: `certfile`
+
+The certificate file to use for SSL.
+
+**Note**: _The file MUST be stored in `/ssl/`, which is the default for Hass.io_
+
+### Option: `keyfile`
+
+The private key file to use for SSL.
+
+**Note**: _The file MUST be stored in `/ssl/`, which is the default for Hass.io_
+
+### Option: `ipv6`
+
+Set this option to `false` to disable IPv6 support.
+
+## Integrating into Home Assistant
+
+The `influxdb` component of Home Assistant makes it possible to transfer all
+state changes to an InfluxDB database.
+
+You need to do the following steps in order to get this working:
+
+- Go into the admin web-interface provided by this add-on.
+- On the left menu click on the "InfluxDB Admin".
+- Create a database for storing Home Assistant's data in, e.g., `homeassistant`.
+- Goto the users tab and create a user for Home Assistant,
+  e.g., `homeassistant`.
+
+Now we've got this in place, add the following snippet to your Home Assistant
+`configuration.yml` file.
+
+```yaml
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: <yourpassword>
+  max_retries: 3
+  default_measurement: state
+```
+
+Restart Home Assistant.
+
+You should now see the data flowing into InfluxDB by visiting the web-interface
+and using the Data Explorer.
+
+## Embedding into Home Assistant
+
+It is possible to embed the Chronograf/InfluxDB Admin interface directly into
+Home Assistant, allowing you to access it through the Home Assistant frontend.
+
+Home Assistant provides the `panel_iframe` component, for these purposes.
+
+Example configuration:
+
+```yaml
+panel_iframe:
+  influxdb:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: http://addres.to.your.hass.io:8888
+```
+
 ## Known issues and limitations
 
 - This add-on does support ARM-based devices, nevertheless, they must
   at least be an ARMv7 device. (Raspberry Pi 1 and Zero is not supported).
+- While the Chronograph interface supports SSL, currently, the add-on does
+  not support having SSL on InfluxDB. This limitation is caused by
+  Chronograf and we are still looking into a proper solution for this.
 
 ## Changelog & Releases
 
