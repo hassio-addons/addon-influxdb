@@ -14,8 +14,8 @@ if hass.config.true 'ssl'; then
     keyfile=$(hass.config.get 'keyfile')
 
     sed -i 's/https-enabled=.*/https-enabled=true/' /etc/influxdb/influxdb.conf
-    sed -i "s#https-certificate=.*#https-certificate=\"/ssl/${certfile}\"" \
+    sed -i "s#https-certificate=.*#https-certificate=\"/ssl/${certfile}\"#" \
         /etc/influxdb/influxdb.conf
-    sed -i "s#https-private-key=.*#https-private-key=\"/ssl/${keyfile}\"" \
+    sed -i "s#https-private-key=.*#https-private-key=\"/ssl/${keyfile}\"#" \
         /etc/influxdb/influxdb.conf
 fi
