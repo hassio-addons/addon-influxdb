@@ -15,7 +15,14 @@ It's useful for recording metrics, sensor data, events,
 and performing analytics. It exposes an HTTP API for client interaction and if
 often used in combination with Grafana to visualize the data.
 
+This add-on comes with Chronograf & Kapacitor pre-installed as well. Which
+gives you a nice InfluxDB admin interface for managing your users, databases,
+data retention settings, and lets you peek inside the database using the
+Data Explorer.
+
 [Click here for the full documentation][docs]
+
+![Chronograf in the Home Assistant Frontend][screenshot]
 
 {% if channel == "edge" %}
 ## WARNING! THIS IS AN EDGE VERSION!
@@ -67,3 +74,4 @@ If you are more interested in stable releases of our add-ons:
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
 [release-shield]: https://img.shields.io/badge/version-{{ version }}-blue.svg
 [release]: {{ repo }}/tree/{{ version }}
+[screenshot]: https://github.com/hassio-addons/addon-influxdb/raw/master/images/screenshot.png
