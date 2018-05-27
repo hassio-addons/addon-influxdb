@@ -11,7 +11,7 @@ exec 3< <(influxd)
 sleep 3
 
 influx -execute \
-    "CREATE USER "chronograf" WITH PASSWORD '${HASSIO_TOKEN}'" \
+    "CREATE USER chronograf WITH PASSWORD '${HASSIO_TOKEN}'" \
         || true
 
 influx -execute \
@@ -23,7 +23,7 @@ influx -execute \
         || true
 
 influx -execute \
-    "CREATE USER "kapacitor" WITH PASSWORD '${HASSIO_TOKEN}'" \
+    "CREATE USER kapacitor WITH PASSWORD '${HASSIO_TOKEN}'" \
         || true
 
 influx -execute \
