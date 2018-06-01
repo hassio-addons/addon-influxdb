@@ -154,14 +154,14 @@ state changes to an InfluxDB database.
 
 You need to do the following steps in order to get this working:
 
-- Go into the admin web-interface provided by this add-on.
+- Click on "OPEN WEB UI" to open the admin web-interface provided by this add-on.
 - On the left menu click on the "InfluxDB Admin".
 - Create a database for storing Home Assistant's data in, e.g., `homeassistant`.
 - Goto the users tab and create a user for Home Assistant,
   e.g., `homeassistant`.
 
 Now we've got this in place, add the following snippet to your Home Assistant
-`configuration.yml` file.
+`configuration.yaml` file.
 
 ```yaml
 influxdb:
