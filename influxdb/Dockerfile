@@ -6,7 +6,14 @@ FROM ${BUILD_FROM}
 ARG BUILD_ARCH=amd64
 
 RUN \
-    gpg \
+    apt-get update \
+    && apt-get install -y --no-install-recommends \
+        apache2-utils=2.4.29-1ubuntu4 \
+        dirmngr=2.2.4-1ubuntu1 \
+        gpg=2.2.4-1ubuntu1 \
+        nginx=1.14.0-0ubuntu1 \
+    \
+    && gpg \
         --keyserver hkp://ha.pool.sks-keyservers.net:11371 \
         --recv-keys "05CE15085FC09D18E99EFB22684A14CF2582E0C5" \
     || gpg \
@@ -48,10 +55,9 @@ RUN \
     && dpkg --install /tmp/chronograf.deb \
     && dpkg --install /tmp/kapacitor.deb \
     \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        nginx=1.14.0-0ubuntu1 \
-        apache2-utils=2.4.29-1ubuntu4 \
+    && apt-get purge -y --auto-remove \
+        dirmngr \
+        gpg \
     \
     && rm -rf /tmp/* \
     && rm -rf /root/.gnupg \
