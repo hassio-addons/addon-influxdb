@@ -51,7 +51,7 @@ RUN \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         nginx=1.14.0-0ubuntu1 \
-        apache2-utils=2.4.18-2ubuntu3.8 \
+        apache2-utils=2.4.29-1ubuntu4 \
     \
     && rm -rf /tmp/* \
     && rm -rf /root/.gnupg \
