@@ -50,7 +50,7 @@ RUN \
     \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-        nginx=1.10.3-0ubuntu0.16.04.2 \
+        nginx=1.14.0-0ubuntu1 \
         apache2-utils=2.4.18-2ubuntu3.8 \
     \
     && rm -rf /tmp/* \
