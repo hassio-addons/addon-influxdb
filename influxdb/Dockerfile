@@ -11,6 +11,7 @@ RUN \
         apache2-utils=2.4.29-1ubuntu4 \
         dirmngr=2.2.4-1ubuntu1 \
         gpg=2.2.4-1ubuntu1 \
+        gpg-agent=2.2.4-1ubuntu1 \
         nginx=1.14.0-0ubuntu1 \
     \
     && gpg \
