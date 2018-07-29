@@ -36,7 +36,7 @@ RUN \
     && curl -J -L -o /tmp/influxdb.deb \
         "https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB}_${ARCH}.deb" \
     \
-    && CHRONOGRAF="1.5.0.1" \
+    && CHRONOGRAF="1.6.0" \
     && curl -J -L -o /tmp/chronograf.deb.asc \
         "https://dl.influxdata.com/chronograf/releases/chronograf_${CHRONOGRAF}_${ARCH}.deb.asc" \
     && curl -J -L -o /tmp/chronograf.deb \
