@@ -30,7 +30,7 @@
     "username": "",
     "password": "",
     "auth": true,
-    "ssl": false,
+    "ssl": true,
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem",
     "ipv6": true
