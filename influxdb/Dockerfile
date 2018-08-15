@@ -11,7 +11,7 @@ ARG BUILD_ARCH=amd64
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-        apache2-utils=2.4.29-1ubuntu4 \
+        apache2-utils=2.4.29-1ubuntu4.1 \
         dirmngr=2.2.4-1ubuntu1.1 \
         gpg=2.2.4-1ubuntu1.1 \
         gpg-agent=2.2.4-1ubuntu1.1 \
