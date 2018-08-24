@@ -35,3 +35,17 @@ else
     password=$(hass.config.get 'password')
     htpasswd -bc /etc/nginx/.htpasswd "${username}" "${password}"
 fi
+
+if [[ $(hass.config.get 'chronograf_path') != "/" ]]
+then
+        sed -i 's/^##chronograf_path_SET//' /etc/nginx/nginx.conf
+        sed -i 's/^##chronograf_path_SET//' /etc/nginx/nginx-ssl.conf
+
+        export chronograf_path=$(echo $(hass.config.get 'chronograf_path') | sed 's|^/||' | sed 's|/|\\/|g' )
+        echo $chronograf_path
+        sed -i "s/##chronograf_path##/${chronograf_path}/g" /etc/nginx/nginx.conf
+        sed -i "s/##chronograf_path##/${chronograf_path}/g" /etc/nginx/nginx-ssl.conf
+else
+        sed -i 's/^##chronograf_path_NOTSET//' /etc/nginx/nginx.conf
+        sed -i 's/^##chronograf_path_NOTSET//' /etc/nginx/nginx-ssl.conf
+fi

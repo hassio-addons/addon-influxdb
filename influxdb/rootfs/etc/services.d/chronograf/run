@@ -27,6 +27,11 @@ options+=(--influxdb-username="chronograf")
 options+=(--influxdb-password="${HASSIO_TOKEN}")
 options+=(--kapacitor-url="http://localhost:9092")
 
+if [[ $(hass.config.get 'chronograf_path') != '/' ]]
+then
+	options+=(--basepath=$(hass.config.get 'chronograf_path'))
+fi
+
 # Find the matching Chronograph log level
 case "$(hass.string.lower "$(hass.config.get 'log_level')")" in
     all|trace|debug)
