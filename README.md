@@ -82,7 +82,8 @@ Example add-on configuration:
     "ssl": true,
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem",
-    "ipv6": true
+    "ipv6": true,
+    "chronograf_path": "/",
 }
 ```
 
@@ -152,6 +153,10 @@ The private key file to use for SSL.
 ### Option: `ipv6`
 
 Set this option to `false` to disable IPv6 support.
+
+### Option: `chronograf_path`
+
+Set this option to something different from `/`, but that begins with a `/` to enable Chronograf's `basepath` option. It makes Chronograf much easier to use begin a reverse proxy. 
 
 ### Option: `i_like_to_be_pwned`
 
