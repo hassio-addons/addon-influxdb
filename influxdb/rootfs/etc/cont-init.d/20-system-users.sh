@@ -14,7 +14,7 @@ for i in {30..0}; do
     if influx -execute "SHOW DATABASES" &> /dev/null; then
         break;
     fi
-    hassio.log.info "InfluxDB init process in progress..."
+    hass.log.info "InfluxDB init process in progress..."
     sleep 2
 done
 
