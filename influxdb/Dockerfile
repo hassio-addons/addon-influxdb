@@ -15,7 +15,7 @@ RUN \
         dirmngr=2.2.4-1ubuntu1.1 \
         gpg=2.2.4-1ubuntu1.1 \
         gpg-agent=2.2.4-1ubuntu1.1 \
-        nginx=1.14.0-0ubuntu1 \
+        nginx=1.14.0-0ubuntu1.1 \
     \
     && gpg \
         --keyserver hkp://ha.pool.sks-keyservers.net:11371 \
