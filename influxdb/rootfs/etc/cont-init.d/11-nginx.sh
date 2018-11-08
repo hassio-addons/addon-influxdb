@@ -21,12 +21,3 @@ if hass.config.true 'ssl'; then
     sed -i "s/%%certfile%%/${certfile}/g" /etc/nginx/nginx.conf
     sed -i "s/%%keyfile%%/${keyfile}/g" /etc/nginx/nginx.conf
 fi
-if ! hass.config.has_value 'username'; then
-    hass.log.warning "Username/password protection is disabled!"
-    hass.log.warning "This is NOT recommended!!!"
-    sed -i '/auth_basic.*/d' /etc/nginx/nginx.conf
-else
-    username=$(hass.config.get 'username')
-    password=$(hass.config.get 'password')
-    htpasswd -bc /etc/nginx/.htpasswd "${username}" "${password}"
-fi

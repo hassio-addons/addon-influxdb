@@ -23,27 +23,23 @@
     "8888/tcp": 8888
   },
   "hassio_api": true,
+  "auth_api": true,
   "hassio_role": "default",
   "homeassistant_api": false,
   "host_network": false,
   "options": {
     "log_level": "info",
-    "username": "",
-    "password": "",
     "auth": true,
     "ssl": true,
     "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem",
+    "keyfile": "privkey.pem"
   },
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
-    "username": "str",
-    "password": "str",
     "auth": "bool",
     "ssl": "bool",
     "certfile": "str",
     "keyfile": "str",
-    "i_like_to_be_pwned": "bool?",
     "leave_front_door_open": "bool?"
   },
   "environment": {
