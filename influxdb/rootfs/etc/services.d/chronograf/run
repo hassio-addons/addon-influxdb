@@ -7,14 +7,30 @@
 # shellcheck disable=SC1091
 source /usr/lib/hassio-addons/base.sh
 
+declare -a options
+
 # Wait for InfluxDB to become available
 s6-svwait -u -t 5000 /var/run/s6/services/influxdb
 
 # Wait for Kapacitor to become available
 s6-svwait -u -t 5000 /var/run/s6/services/kapacitor
 
+# Wait for InfluxDB...
+hass.log.info "Chronograf is waiting until InfluxDB is available..."
+for i in {180..0}; do
+    if influx \
+        -execute "SHOW DATABASES" \
+        -username "chronograf" \
+        -password "${HASSIO_TOKEN}" \
+        > /dev/null 2>&1; then
+        break;
+    fi
+    sleep 5
+done
 
-declare -a options
+if [[ "$i" = 0 ]]; then
+    hass.log.warning "Chronograf is done waiting. Starting anyway..."
+fi
 
 hass.log.info 'Starting Chronograf'
 
