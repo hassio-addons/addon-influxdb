@@ -41,6 +41,7 @@ comparison to installing any other Hass.io add-on.
 1. Install the "InfluxDB" add-on.
 1. Start the "InfluxDB" add-on.
 1. Check the logs of the "InfluxDB" to see if everything went well.
+1. You can log into the web interface using your Home Assistant credentials.
 
 **NOTE**: Do not add this repository to Hass.io, please use:
 `https://github.com/hassio-addons/repository`.
@@ -76,13 +77,10 @@ Example add-on configuration:
 ```json
 {
     "log_level": "info",
-    "username": "frenck",
-    "password": "allyourbasearebelongtous",
     "auth": true,
     "ssl": true,
     "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem",
-    "ipv6": true
+    "keyfile": "privkey.pem"
 }
 ```
 
@@ -105,24 +103,6 @@ Please note that each level automatically includes log messages from a
 more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
 you are troubleshooting.
-
-### Option: `username`
-
-Username for authenticating with Chronograf / InfluxDB admin interface.
-Leaving the username field empty, will disable the authentication mechanism
-entirely.
-
-**Note**: _This is NOT the username for InfluxDB_
-
-**Note**: _This option support secrets, e.g., `!secret influx_username`._
-
-### Option: `password`
-
-Password for authenticating with Chronograf / InfluxDB admin interface.
-
-**Note**: _This is NOT the password for InfluxDB_
-
-**Note**: _This option support secrets, e.g., `!secret influx_password`._
 
 ### Option: `auth`
 
@@ -148,18 +128,6 @@ The certificate file to use for SSL.
 The private key file to use for SSL.
 
 **Note**: _The file MUST be stored in `/ssl/`, which is the default for Hass.io_
-
-### Option: `ipv6`
-
-Set this option to `false` to disable IPv6 support.
-
-### Option: `i_like_to_be_pwned`
-
-Adding this option to the add-on configuration allows to you bypass the
-HaveIBeenPwned password requirement by setting it to `true`.
-
-**Note**: _We STRONGLY suggest picking a stronger/safer password instead of
-using this option! USE AT YOUR OWN RISK!_
 
 ### Option: `leave_front_door_open`
 
