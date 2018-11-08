@@ -10,12 +10,12 @@ exec 3< <(influxd)
 
 sleep 3
 
-for i in {30..0}; do
-    if influx -execute "SHOW DATABASES" &> /dev/null; then
+for i in {180..0}; do
+    if influx -execute "SHOW DATABASES" > /dev/null 2>&1; then
         break;
     fi
     hass.log.info "InfluxDB init process in progress..."
-    sleep 2
+    sleep 5
 done
 
 if [[ "$i" = 0 ]]; then
