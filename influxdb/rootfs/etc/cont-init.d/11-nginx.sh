@@ -21,11 +21,6 @@ if hass.config.true 'ssl'; then
     sed -i "s/%%certfile%%/${certfile}/g" /etc/nginx/nginx.conf
     sed -i "s/%%keyfile%%/${keyfile}/g" /etc/nginx/nginx.conf
 fi
-
-if ! hass.config.true 'ipv6'; then
-    sed -i '/listen \[::\].*/ d' /etc/nginx/nginx.conf
-fi
-
 if ! hass.config.has_value 'username'; then
     hass.log.warning "Username/password protection is disabled!"
     hass.log.warning "This is NOT recommended!!!"
