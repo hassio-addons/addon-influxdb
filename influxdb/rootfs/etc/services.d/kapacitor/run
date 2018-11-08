@@ -9,8 +9,22 @@ source /usr/lib/hassio-addons/base.sh
 # Wait for InfluxDB to become available
 s6-svwait -u -t 5000 /var/run/s6/services/influxdb
 
-# Wait another 2 seconds...
-sleep 2
+# Wait for InfluxDB...
+hass.log.info "Kapacitor is waiting until InfluxDB is available..."
+for i in {180..0}; do
+    if influx \
+        -execute "SHOW DATABASES" \
+        -username "kapacitor" \
+        -password "${HASSIO_TOKEN}" \
+        > /dev/null 2>&1; then
+        break;
+    fi
+    sleep 5
+done
+
+if [[ "$i" = 0 ]]; then
+    hass.log.warning "Kapacitor is done waiting. Starting anyway..."
+fi
 
 hass.log.info 'Starting the Kapacitor'
 
