@@ -48,7 +48,7 @@ RUN \
     && curl -J -L -o /tmp/chronograf.deb \
         "https://dl.influxdata.com/chronograf/releases/chronograf_${CHRONOGRAF}_${ARCH}.deb" \
     \
-    && KAPACITOR="1.5.1" \
+    && KAPACITOR="1.5.2" \
     && curl -J -L -o /tmp/kapacitor.deb.asc \
         "https://dl.influxdata.com/kapacitor/releases/kapacitor_${KAPACITOR}_${ARCH}.deb.asc" \
     && curl -J -L -o /tmp/kapacitor.deb \
