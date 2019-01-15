@@ -3,7 +3,7 @@
   "version": "dev",
   "slug": "influxdb",
   "description": "Scalable datastore for metrics, events, and real-time analytics",
-  "url": "https://community.home-assistant.io/t/community-hass-io-add-on-influxdb/54491?u=frenck",
+  "url": "https://github.com/hassio-addons/addon-influxdb",
   "webui": "[PROTO:ssl]://[HOST]:[PORT:8888]",
   "startup": "services",
   "arch": [
