@@ -10,7 +10,7 @@ exec 3< <(influxd)
 
 sleep 3
 
-for i in {180..0}; do
+for i in {1800..0}; do
     if influx -execute "SHOW DATABASES" > /dev/null 2>&1; then
         break;
     fi

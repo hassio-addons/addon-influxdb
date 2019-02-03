@@ -11,7 +11,7 @@ s6-svwait -u -t 5000 /var/run/s6/services/influxdb
 
 # Wait for InfluxDB...
 hass.log.info "Kapacitor is waiting until InfluxDB is available..."
-for i in {180..0}; do
+for i in {1800..0}; do
     if influx \
         -execute "SHOW DATABASES" \
         -username "kapacitor" \
