@@ -6,8 +6,12 @@
 # shellcheck disable=SC1091
 source /usr/lib/hassio-addons/base.sh
 
+declare secret
+
 # Wait for InfluxDB to become available
 s6-svwait -u -t 5000 /var/run/s6/services/influxdb
+
+secret=$(</data/secret)
 
 # Wait for InfluxDB...
 hass.log.info "Kapacitor is waiting until InfluxDB is available..."
@@ -15,7 +19,7 @@ for i in {1800..0}; do
     if influx \
         -execute "SHOW DATABASES" \
         -username "kapacitor" \
-        -password "${HASSIO_TOKEN}" \
+        -password "${secret}" \
         > /dev/null 2>&1; then
         break;
     fi

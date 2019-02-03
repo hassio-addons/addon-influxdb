@@ -6,5 +6,9 @@
 # shellcheck disable=SC1091
 source /usr/lib/hassio-addons/base.sh
 
-sed -i "s/password.*/password = \"${HASSIO_TOKEN}\"/" \
+declare secret
+
+secret=$(</data/secret)
+
+sed -i "s/password.*/password = \"${secret}\"/" \
     /etc/kapacitor/kapacitor.conf

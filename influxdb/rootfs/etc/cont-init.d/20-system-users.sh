@@ -6,6 +6,16 @@
 # shellcheck disable=SC1091
 source /usr/lib/hassio-addons/base.sh
 
+declare secret
+
+# If secret file exists, skip this script
+if hass.file_exists "/data/secret"; then
+    exit 0
+fi
+
+# Generate secret based on the Hass.io token
+secret="${HASSIO_TOKEN:21:32}"
+
 exec 3< <(influxd)
 
 sleep 3
@@ -23,11 +33,11 @@ if [[ "$i" = 0 ]]; then
 fi
 
 influx -execute \
-    "CREATE USER chronograf WITH PASSWORD '${HASSIO_TOKEN}'" \
+    "CREATE USER chronograf WITH PASSWORD '${secret}'" \
          &> /dev/null || true
 
 influx -execute \
-    "SET PASSWORD FOR chronograf = '${HASSIO_TOKEN}'" \
+    "SET PASSWORD FOR chronograf = '${secret}'" \
          &> /dev/null || true
 
 influx -execute \
@@ -35,11 +45,11 @@ influx -execute \
         &> /dev/null || true
 
 influx -execute \
-    "CREATE USER kapacitor WITH PASSWORD '${HASSIO_TOKEN}'" \
+    "CREATE USER kapacitor WITH PASSWORD '${secret}'" \
         &> /dev/null || true
 
 influx -execute \
-    "SET PASSWORD FOR kapacitor = '${HASSIO_TOKEN}'" \
+    "SET PASSWORD FOR kapacitor = '${secret}'" \
         &> /dev/null || true
 
 influx -execute \
@@ -47,3 +57,6 @@ influx -execute \
         &> /dev/null || true
 
 kill "$(pgrep influxd)" >/dev/null 2>&1
+
+# Save secret for future use
+echo "${secret}" > /data/secret
