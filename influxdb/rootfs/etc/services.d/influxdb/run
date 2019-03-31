@@ -1,12 +1,9 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: InfluxDB
 # Runs the InfluxDB Server
 # ==============================================================================
-# shellcheck disable=SC1091
-source /usr/lib/hassio-addons/base.sh
-
-hass.log.info 'Starting the InfluxDB'
+bashio::log.info 'Starting the InfluxDB...'
 
 # Run InfluxDB
 exec influxd

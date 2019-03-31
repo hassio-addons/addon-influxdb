@@ -1,15 +1,12 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: InfluxDB
 # Ensure a user for Chronograf & Kapacitor exists within InfluxDB
 # ==============================================================================
-# shellcheck disable=SC1091
-source /usr/lib/hassio-addons/base.sh
-
 declare secret
 
 # If secret file exists, skip this script
-if hass.file_exists "/data/secret"; then
+if bashio::fs.file_exists "/data/secret"; then
     exit 0
 fi
 
@@ -24,12 +21,12 @@ for i in {1800..0}; do
     if influx -execute "SHOW DATABASES" > /dev/null 2>&1; then
         break;
     fi
-    hass.log.info "InfluxDB init process in progress..."
+    bashio::log.info "InfluxDB init process in progress..."
     sleep 5
 done
 
 if [[ "$i" = 0 ]]; then
-    hass.die "InfluxDB init process failed."
+    bashio::exit.nok "InfluxDB init process failed."
 fi
 
 influx -execute \

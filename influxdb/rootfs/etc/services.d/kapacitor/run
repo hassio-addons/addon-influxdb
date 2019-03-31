@@ -1,11 +1,8 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: InfluxDB
 # Runs the Kapacitor Server
 # ==============================================================================
-# shellcheck disable=SC1091
-source /usr/lib/hassio-addons/base.sh
-
 declare secret
 
 # Wait for InfluxDB to become available
@@ -14,7 +11,7 @@ s6-svwait -u -t 5000 /var/run/s6/services/influxdb
 secret=$(</data/secret)
 
 # Wait for InfluxDB...
-hass.log.info "Kapacitor is waiting until InfluxDB is available..."
+bashio::log.info "Kapacitor is waiting until InfluxDB is available..."
 for i in {1800..0}; do
     if influx \
         -execute "SHOW DATABASES" \
@@ -27,10 +24,10 @@ for i in {1800..0}; do
 done
 
 if [[ "$i" = 0 ]]; then
-    hass.log.warning "Kapacitor is done waiting. Starting anyway..."
+    bashio::log.warning "Kapacitor is done waiting. Starting anyway..."
 fi
 
-hass.log.info 'Starting the Kapacitor'
+bashio::log.info 'Starting the Kapacitor'
 
 # Run Kapacitor
 exec kapacitord

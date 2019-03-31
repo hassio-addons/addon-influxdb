@@ -1,12 +1,9 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 # shellcheck disable=SC2191
 # ==============================================================================
 # Community Hass.io Add-ons: InfluxDB
 # Runs the Chronograf Server
 # ==============================================================================
-# shellcheck disable=SC1091
-source /usr/lib/hassio-addons/base.sh
-
 declare -a options
 declare secret
 
@@ -19,7 +16,7 @@ s6-svwait -u -t 5000 /var/run/s6/services/kapacitor
 secret=$(</data/secret)
 
 # Wait for InfluxDB...
-hass.log.info "Chronograf is waiting until InfluxDB is available..."
+bashio::log.info "Chronograf is waiting until InfluxDB is available..."
 for i in {1800..0}; do
     if influx \
         -execute "SHOW DATABASES" \
@@ -32,10 +29,10 @@ for i in {1800..0}; do
 done
 
 if [[ "$i" = 0 ]]; then
-    hass.log.warning "Chronograf is done waiting. Starting anyway..."
+    bashio::log.warning "Chronograf is done waiting. Starting anyway..."
 fi
 
-hass.log.info 'Starting Chronograf'
+bashio::log.info 'Starting Chronograf...'
 
 options+=(--host="127.0.0.1")
 options+=(--port=8889)
@@ -47,17 +44,19 @@ options+=(--influxdb-password="${secret}")
 options+=(--kapacitor-url="http://localhost:9092")
 
 # Find the matching Chronograph log level
-case "$(hass.string.lower "$(hass.config.get 'log_level')")" in
-    all|trace|debug)
-        options+=(--log-level=debug)
-        ;;
-    info|notice)
-        options+=(--log-level=info)
-        ;;
-    warning|error|fatal|off)
-        options+=(--log-level=error)
-        ;;
-esac
+if bashio::config.has_value 'log_level'; then
+    case "$(bashio::string.lower "$(bashio::config 'log_level')")" in
+        all|trace|debug)
+            options+=(--log-level=debug)
+            ;;
+        info|notice)
+            options+=(--log-level=info)
+            ;;
+        warning|error|fatal|off)
+            options+=(--log-level=error)
+            ;;
+    esac
+fi
 
 # Run Chronograf
 exec chronograf "${options[@]}"
