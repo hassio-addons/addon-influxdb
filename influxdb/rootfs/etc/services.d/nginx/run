@@ -5,6 +5,10 @@
 # ==============================================================================
 # Wait for Chronograf to become available
 s6-svwait -u -t 5000 /var/run/s6/services/chronograf
+timeout 15 \
+    bash -c \
+        'until echo > /dev/tcp/localhost/8889 ; do sleep 0.5; done' \
+            > /dev/null 2>&1
 
 bashio::log.info "Starting NGinx server..."
 
