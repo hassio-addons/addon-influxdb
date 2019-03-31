@@ -61,6 +61,7 @@ Example add-on configuration:
 {
     "log_level": "info",
     "auth": true,
+    "reporting": true,
     "ssl": true,
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem"
@@ -92,6 +93,12 @@ you are troubleshooting.
 Enable or disable InfluxDB user authentication.
 
 **Note**: _Turning this off is NOT recommended!_
+
+### Option: `reporting`
+
+This option allows you to disable the reporting of usage data to InfluxData.
+
+**Note**: _No data from user databases is ever transmitted!_
 
 ### Option: `ssl`
 

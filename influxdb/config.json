@@ -29,6 +29,7 @@
   "host_network": false,
   "options": {
     "auth": true,
+    "reporting": true,
     "ssl": true,
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem"
@@ -36,6 +37,7 @@
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
     "auth": "bool",
+    "reporting": "bool",
     "ssl": "bool",
     "certfile": "str",
     "keyfile": "str",
