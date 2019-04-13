@@ -18,7 +18,6 @@ RUN \
         luarocks=2.4.2+dfsg-1 \
         nginx=1.14.0-0ubuntu1.2 \
     \
-    && luarocks install lua-resty-http 0.12-0 \
     \
     && gpg \
         --keyserver hkp://ha.pool.sks-keyservers.net:11371 \
@@ -32,6 +31,7 @@ RUN \
     || gpg \
         --keyserver keyserver.pgp.com \
         --recv-keys "05CE15085FC09D18E99EFB22684A14CF2582E0C5" \
+    && luarocks install lua-resty-http 0.13-0 \
     \
     && ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
