@@ -1,0 +1,23 @@
+server {
+    listen %%port%% default_server ssl http2;
+
+    include /etc/nginx/includes/server_params.conf;
+    include /etc/nginx/includes/ssl_params.conf;
+    include /etc/nginx/includes/proxy_params.conf;
+
+    ssl on;
+    ssl_certificate /ssl/%%certfile%%;
+    ssl_certificate_key /ssl/%%keyfile%%;
+
+    location / {
+        access_by_lua_file /etc/nginx/lua/ha-auth.lua;
+        proxy_pass http://backend%%ingress_entry%%/;
+        sub_filter_once off;
+        sub_filter '%%ingress_entry%%/'  '';
+    }
+
+    location %%ingress_entry%%/ {
+        access_by_lua_file /etc/nginx/lua/ha-auth.lua;
+        proxy_pass http://backend;
+    }
+}

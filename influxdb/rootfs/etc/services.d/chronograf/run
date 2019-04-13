@@ -5,6 +5,7 @@
 # Runs the Chronograf Server
 # ==============================================================================
 declare -a options
+declare ingress_entry
 declare secret
 
 # Wait for InfluxDB to become available
@@ -57,6 +58,9 @@ if bashio::config.has_value 'log_level'; then
             ;;
     esac
 fi
+
+ingress_entry=$(bashio::addon.ingress_entry)
+options+=(--basepath "${ingress_entry}")
 
 # Run Chronograf
 exec chronograf "${options[@]}"

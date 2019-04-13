@@ -4,12 +4,13 @@
 # Runs the Nginx daemon
 # ==============================================================================
 # Wait for Chronograf to become available
-s6-svwait -u -t 5000 /var/run/s6/services/chronograf
-timeout 15 \
-    bash -c \
-        'until echo > /dev/tcp/localhost/8889 ; do sleep 0.5; done' \
-            > /dev/null 2>&1
+bashio::net.wait_for 8889
 
-bashio::log.info "Starting NGinx server..."
+bashio::log.info "Starting NGinx..."
 
-exec nginx -g "daemon off;"
+# Disable HA Authentication if front door is open
+if bashio::config.true 'leave_front_door_open'; then
+    export DISABLE_HA_AUTHENTICATION=true
+fi
+
+exec nginx
