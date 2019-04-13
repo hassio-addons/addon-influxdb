@@ -46,7 +46,7 @@ comparison to installing any other Hass.io add-on.
 1. Install the "InfluxDB" add-on.
 1. Start the "InfluxDB" add-on.
 1. Check the logs of the "InfluxDB" to see if everything went well.
-1. You can log into the web interface using your Home Assistant credentials.
+1. Click the "OPEN WEB UI" button!
 
 **NOTE**: Do not add this repository to Hass.io, please use:
 `https://github.com/hassio-addons/repository`.
@@ -179,8 +179,6 @@ panel_iframe:
 
 ## Known issues and limitations
 
-- This add-on does support ARM-based devices, nevertheless, they must
-  at least be an ARMv7 device. (Raspberry Pi 1 and Zero is not supported).
 - While the Chronograph interface supports SSL, currently, the add-on does
   not support having SSL on InfluxDB. This limitation is caused by
   Chronograf and we are still looking into a proper solution for this.
