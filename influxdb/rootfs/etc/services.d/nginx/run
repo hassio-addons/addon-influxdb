@@ -4,7 +4,7 @@
 # Runs the Nginx daemon
 # ==============================================================================
 # Wait for Chronograf to become available
-bashio::net.wait_for 8889
+bashio::net.wait_for 8889 localhost 9000
 
 bashio::log.info "Starting NGinx..."
 
