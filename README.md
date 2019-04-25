@@ -160,23 +160,6 @@ Restart Home Assistant.
 You should now see the data flowing into InfluxDB by visiting the web-interface
 and using the Data Explorer.
 
-## Embedding into Home Assistant
-
-It is possible to embed the Chronograf/InfluxDB Admin interface directly into
-Home Assistant, allowing you to access it through the Home Assistant frontend.
-
-Home Assistant provides the `panel_iframe` component, for these purposes.
-
-Example configuration:
-
-```yaml
-panel_iframe:
-  influxdb:
-    title: InfluxDB
-    icon: mdi:chart-areaspline
-    url: http://addres.to.your.hass.io:8888
-```
-
 ## Known issues and limitations
 
 - While the Chronograph interface supports SSL, currently, the add-on does
