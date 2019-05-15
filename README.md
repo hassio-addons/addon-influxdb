@@ -160,6 +160,9 @@ Restart Home Assistant.
 You should now see the data flowing into InfluxDB by visiting the web-interface
 and using the Data Explorer.
 
+Full details of the Home Assistant component can be found here:
+ - https://www.home-assistant.io/components/influxdb/
+
 ## Known issues and limitations
 
 - While the Chronograph interface supports SSL, currently, the add-on does
