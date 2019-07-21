@@ -130,7 +130,7 @@ only exposed to your internal network. USE AT YOUR OWN RISK!_
 
 ## Integrating into Home Assistant
 
-The `influxdb` component of Home Assistant makes it possible to transfer all
+The `influxdb` integration of Home Assistant makes it possible to transfer all
 state changes to an InfluxDB database.
 
 You need to do the following steps in order to get this working:
@@ -160,8 +160,9 @@ Restart Home Assistant.
 You should now see the data flowing into InfluxDB by visiting the web-interface
 and using the Data Explorer.
 
-Full details of the Home Assistant component can be found here:
- - https://www.home-assistant.io/components/influxdb/
+Full details of the Home Assistant integration can be found here:
+
+<https://www.home-assistant.io/components/influxdb/>
 
 ## Known issues and limitations
 
