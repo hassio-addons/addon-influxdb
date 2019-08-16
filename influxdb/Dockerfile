@@ -11,9 +11,9 @@ ARG BUILD_ARCH=amd64
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-        libnginx-mod-http-lua=1.14.0-0ubuntu1.3 \
+        libnginx-mod-http-lua=1.14.0-0ubuntu1.5 \
         luarocks=2.4.2+dfsg-1 \
-        nginx=1.14.0-0ubuntu1.3 \
+        nginx=1.14.0-0ubuntu1.5 \
     \
     && luarocks install lua-resty-http 0.13-0 \
     \
