@@ -64,7 +64,13 @@ Example add-on configuration:
     "reporting": true,
     "ssl": true,
     "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem"
+    "keyfile": "privkey.pem",
+    "envvars": [
+      {
+        "name": "INFLUXDB_HTTP_LOG_ENABLED",
+        "value": "true"
+      }
+    ]
 }
 ```
 
@@ -118,6 +124,25 @@ The certificate file to use for SSL.
 The private key file to use for SSL.
 
 **Note**: _The file MUST be stored in `/ssl/`, which is the default for Hass.io_
+
+### Option: `envvars`
+
+This allows the setting of Environment Variables to control InfluxDB
+configuration as documented at:
+
+ <https://docs.influxdata.com/influxdb/v1.7/administration/config/#configuration-settings>
+
+**Note**: _Changing these options can possibly cause issues with you instance.
+USE AT YOUR OWN RISK!_
+
+#### Sub-option: `name`
+
+The name of the environment variable to set which must start with `INFLUXDB_`
+
+#### Sub-option: `value`
+
+The value of the environment variable to set, set the Influx documentation for
+full details.
 
 ### Option: `leave_front_door_open`
 
