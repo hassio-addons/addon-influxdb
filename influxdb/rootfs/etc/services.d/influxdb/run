@@ -3,6 +3,16 @@
 # Community Hass.io Add-ons: InfluxDB
 # Runs the InfluxDB Server
 # ==============================================================================
+declare name
+declare value
+
+for envvar in $(bashio::config 'envvars|keys'); do
+    name=$(bashio::config "envvars[${envvar}].name")
+    value=$(bashio::config "envvars[${envvar}].value")
+    bashio::log.debug "Setting Env Variable ${name} to ${value}"
+    export "${name}"="${value}"
+done
+
 bashio::log.info 'Starting the InfluxDB...'
 
 # Run InfluxDB
