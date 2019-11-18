@@ -27,7 +27,7 @@ Scalable datastore for metrics, events, and real-time analytics.
 
 InfluxDB is an open source time series database optimized for high-write-volume.
 It's useful for recording metrics, sensor data, events,
-and performing analytics. It exposes an HTTP API for client interaction and if
+and performing analytics. It exposes an HTTP API for client interaction and is
 often used in combination with Grafana to visualize the data.
 
 ![Chronograf in the Home Assistant Frontend](images/screenshot.png)
