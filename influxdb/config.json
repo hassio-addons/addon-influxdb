@@ -50,7 +50,7 @@
     "keyfile": "str",
     "envvars": [
       {
-        "name": "match(^INFLUXDB_)",
+        "name": "match(^INFLUXDB_([A-Z0-9_])+$))",
         "value": "str"
       }
     ],
