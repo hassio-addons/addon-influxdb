@@ -135,6 +135,8 @@ configuration as documented at:
 **Note**: _Changing these options can possibly cause issues with you instance.
 USE AT YOUR OWN RISK!_
 
+These are case sensitive.
+
 #### Sub-option: `name`
 
 The name of the environment variable to set which must start with `INFLUXDB_`
