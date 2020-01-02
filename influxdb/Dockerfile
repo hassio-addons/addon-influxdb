@@ -15,7 +15,7 @@ RUN \
         luarocks=2.4.2+dfsg-1 \
         nginx=1.14.0-0ubuntu1.6 \
     \
-    && luarocks install lua-resty-http 0.13-0 \
+    && luarocks install lua-resty-http 0.15-0 \
     \
     && ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
