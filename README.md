@@ -42,14 +42,10 @@ Data Explorer.
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
-1. [Add our Hass.io add-ons repository][repository] to your Hass.io instance.
-1. Install the "InfluxDB" add-on.
+1. Search for the "InfluxDB" add-on in the Hass.io add-on store and install it.
 1. Start the "InfluxDB" add-on.
 1. Check the logs of the "InfluxDB" to see if everything went well.
 1. Click the "OPEN WEB UI" button!
-
-**NOTE**: Do not add this repository to Hass.io, please use:
-`https://github.com/hassio-addons/repository`.
 
 ## Configuration
 
