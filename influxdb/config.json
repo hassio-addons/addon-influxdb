@@ -42,7 +42,7 @@
     "envvars": []
   },
   "schema": {
-    "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+    "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
     "auth": "bool",
     "reporting": "bool",
     "ssl": "bool",
