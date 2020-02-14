@@ -5,7 +5,7 @@
 # ==============================================================================
 declare port
 declare certfile
-declare hassio_dns
+declare dns_host
 declare ingress_interface
 declare ingress_port
 declare ingress_entry
@@ -37,5 +37,5 @@ sed -i "s/%%port%%/${ingress_port}/g" /etc/nginx/servers/ingress.conf
 sed -i "s/%%interface%%/${ingress_interface}/g" /etc/nginx/servers/ingress.conf
 sed -i "s#%%ingress_entry%%#${ingress_entry}#g" /etc/nginx/servers/ingress.conf
 
-hassio_dns=$(bashio::dns.host)
-sed -i "s/%%hassio_dns%%/${hassio_dns}/g" /etc/nginx/includes/resolver.conf
+dns_host=$(bashio::dns.host)
+sed -i "s/%%dns_host%%/${dns_host}/g" /etc/nginx/includes/resolver.conf
