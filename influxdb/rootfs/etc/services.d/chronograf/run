@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 # shellcheck disable=SC2191
 # ==============================================================================
-# Community Hass.io Add-ons: InfluxDB
+# Home Assistant Community Add-on: InfluxDB
 # Runs the Chronograf Server
 # ==============================================================================
 declare -a options

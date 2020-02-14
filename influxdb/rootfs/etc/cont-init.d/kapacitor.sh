@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Community Hass.io Add-ons: InfluxDB
+# Home Assistant Community Add-on: InfluxDB
 # Configures password for Kapacitor
 # ==============================================================================
 declare secret
