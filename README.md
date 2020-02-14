@@ -53,21 +53,16 @@ comparison to installing any other Hass.io add-on.
 
 Example add-on configuration:
 
-```json
-{
-    "log_level": "info",
-    "auth": true,
-    "reporting": true,
-    "ssl": true,
-    "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem",
-    "envvars": [
-      {
-        "name": "INFLUXDB_HTTP_LOG_ENABLED",
-        "value": "true"
-      }
-    ]
-}
+```yaml
+log_level: info
+auth: true
+reporting: true
+ssl: true
+certfile: fullchain.pem
+keyfile: privkey.pem
+envvars:
+  - name: INFLUXDB_HTTP_LOG_ENABLED
+    value: 'true'
 ```
 
 **Note**: _This is just an example, don't copy and past it! Create your own!_
