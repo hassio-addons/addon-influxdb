@@ -65,7 +65,7 @@ envvars:
     value: 'true'
 ```
 
-**Note**: _This is just an example, don't copy and past it! Create your own!_
+**Note**: _This is just an example, don't copy and paste it! Create your own!_
 
 ### Option: `log_level`
 
