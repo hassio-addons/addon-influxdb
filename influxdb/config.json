@@ -16,11 +16,13 @@
   "boot": "auto",
   "ports": {
     "80/tcp": null,
-    "8086/tcp": 8086
+    "8086/tcp": 8086,
+    "8089/udp": 8089
   },
   "ports_description": {
     "80/tcp": "Web interface (Not required for Ingress)",
-    "8086/tcp": "InfluxDB server"
+    "8086/tcp": "InfluxDB server",
+    "8089/udp": "InfluxDB UDP service port"
   },
   "hassio_api": true,
   "auth_api": true,
