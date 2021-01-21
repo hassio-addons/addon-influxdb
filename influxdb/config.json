@@ -13,7 +13,6 @@
   "arch": ["aarch64", "amd64", "armv7", "i386"],
   "init": false,
   "map": ["share:rw", "ssl"],
-  "boot": "auto",
   "ports": {
     "80/tcp": null,
     "8086/tcp": 8086
@@ -22,10 +21,7 @@
     "80/tcp": "Web interface (Not required for Ingress)",
     "8086/tcp": "InfluxDB server"
   },
-  "hassio_api": true,
   "auth_api": true,
-  "hassio_role": "default",
-  "homeassistant_api": false,
   "options": {
     "auth": true,
     "reporting": true,
