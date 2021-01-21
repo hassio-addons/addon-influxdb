@@ -4,6 +4,5 @@
     "amd64": "hassioaddons/debian-base-amd64:3.2.2",
     "armv7": "hassioaddons/debian-base-armv7:3.2.2",
     "i386": "hassioaddons/debian-base-i386:3.2.2"
-  },
-  "args": {}
+  }
 }
