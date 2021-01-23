@@ -131,7 +131,8 @@ You need to do the following steps in order to get this working:
 - Create a database for storing Home Assistant's data in, e.g., `homeassistant`.
 - Go to the users tab and create a user for Home Assistant,
   e.g., `homeassistant`.
-- Add "ALL" to "Permissions" of the created user, to allow writing to your database.
+- Add "ALL" to "Permissions" of the created user, to allow writing to your
+  database.
 
 Now we've got this in place, add the following snippet to your Home Assistant
 `configuration.yaml` file.
