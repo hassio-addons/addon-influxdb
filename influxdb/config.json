@@ -25,9 +25,9 @@
   "options": {
     "auth": true,
     "reporting": true,
-    "ssl": true,
-    "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem",
+    "ssl": false,
+    "certfile": "",
+    "keyfile": "",
     "envvars": []
   },
   "schema": {
