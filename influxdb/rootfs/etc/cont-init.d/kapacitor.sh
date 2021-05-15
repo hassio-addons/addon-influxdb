@@ -1,11 +1,12 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Home Assistant Community Add-on: InfluxDB
-# Configures password for Kapacitor
+# Configures Kapacitor.conf
 # ==============================================================================
-declare secret
 
-secret=$(</data/secret)
-
-sed -i "s/password.*/password = \"${secret}\"/" \
-    /etc/kapacitor/kapacitor.conf
+bashio::var.json \
+    reporting "^$(bashio::config 'reporting')" \
+    secret "$(</data/secret)"\
+    | tempio \
+        -template /etc/kapacitor/templates/kapacitor.gtpl \
+        -out /etc/kapacitor/kapacitor.conf

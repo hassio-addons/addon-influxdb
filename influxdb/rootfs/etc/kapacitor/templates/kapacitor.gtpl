@@ -15,5 +15,9 @@ data_dir = "/data/kapacitor"
 [[influxdb]]
   urls = ["http://localhost:8086"]
   username = "kapacitor"
-  password = ""
+  password = "{{ .secret }}"
   insecure-skip-verify = true
+
+[reporting]
+  enabled = {{ .reporting }}
+  url = "https://usage.influxdata.com"
