@@ -62,5 +62,9 @@ fi
 ingress_entry=$(bashio::addon.ingress_entry)
 options+=(--basepath "${ingress_entry}")
 
+if bashio::config.false 'reporting'; then
+    options+=(--reporting-disabled)
+fi
+
 # Run Chronograf
 exec chronograf "${options[@]}"
