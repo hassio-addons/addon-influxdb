@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.2.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:5.0.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -11,10 +11,10 @@ ARG BUILD_ARCH=amd64
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-        libnginx-mod-http-lua=1.14.2-2+deb10u4 \
-        luarocks=2.4.2+dfsg-1 \
-        nginx=1.14.2-2+deb10u4 \
-        procps=2:3.3.15-2 \
+        libnginx-mod-http-lua=1.18.0-6.1 \
+        luarocks=2.4.2+dfsg-1.1 \
+        nginx=1.18.0-6.1 \
+        procps=2:3.3.17-5 \
     \
     && luarocks install lua-resty-http 0.15-0 \
     \
