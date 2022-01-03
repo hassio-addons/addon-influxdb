@@ -128,7 +128,7 @@ You need to do the following steps in order to get this working:
 
 - Click on "OPEN WEB UI" to open the admin web-interface provided by this add-on.
 - On the left menu click on the "InfluxDB Admin".
-- Create a database for storing Home Assistant's data in, e.g., `homeassistant`.
+- Create a database for storing Home Assistant's data in, e.g., `home_assistant`.
 - Go to the users tab and create a user for Home Assistant,
   e.g., `homeassistant`.
 - Add "ALL" to "Permissions" of the created user, to allow writing to your
@@ -141,7 +141,7 @@ Now we've got this in place, add the following snippet to your Home Assistant
 influxdb:
   host: a0d7b954-influxdb
   port: 8086
-  database: homeassistant
+  database: home_assistant
   username: homeassistant
   password: <yourpassword>
   max_retries: 3
