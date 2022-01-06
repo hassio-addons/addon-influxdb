@@ -155,7 +155,7 @@ and using the Data Explorer.
 
 Full details of the Home Assistant integration can be found here:
 
-<https://www.home-assistant.io/components/influxdb/>
+<https://www.home-assistant.io/integrations/influxdb/>
 
 ## Known issues and limitations
 
