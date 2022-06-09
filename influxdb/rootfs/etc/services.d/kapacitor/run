@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # ==============================================================================
 # Home Assistant Community Add-on: InfluxDB
 # Runs the Kapacitor Server
@@ -6,7 +6,7 @@
 declare secret
 
 # Wait for InfluxDB to become available
-s6-svwait -u -t 5000 /var/run/s6/services/influxdb
+s6-svwait -u -t 5000 /run/service//influxdb
 
 secret=$(</data/secret)
 

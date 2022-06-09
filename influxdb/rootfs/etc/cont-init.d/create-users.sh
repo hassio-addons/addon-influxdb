@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # ==============================================================================
 # Home Assistant Community Add-on: InfluxDB
 # Ensure a user for Chronograf & Kapacitor exists within InfluxDB

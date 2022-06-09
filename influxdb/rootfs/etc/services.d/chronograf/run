@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # shellcheck disable=SC2191
 # ==============================================================================
 # Home Assistant Community Add-on: InfluxDB
@@ -9,10 +9,10 @@ declare ingress_entry
 declare secret
 
 # Wait for InfluxDB to become available
-s6-svwait -u -t 5000 /var/run/s6/services/influxdb
+s6-svwait -u -t 5000 /run/service//influxdb
 
 # Wait for Kapacitor to become available
-s6-svwait -u -t 5000 /var/run/s6/services/kapacitor
+s6-svwait -u -t 5000 /run/service//kapacitor
 
 secret=$(</data/secret)
 
