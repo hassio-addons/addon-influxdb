@@ -7,7 +7,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base system
 ARG BUILD_ARCH=amd64
-
+ARG INFLUXDB_VERSION="1.8.10"
+ARG CHRONOGRAF_VERSION="1.9.4"
+ARG KAPACITOR_VERSION="1.5.9-1"
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -22,17 +24,14 @@ RUN \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     \
-    && INFLUXDB="1.8.10" \
     && curl -J -L -o /tmp/influxdb.deb \
-        "https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB}_${ARCH}.deb" \
+        "https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_${ARCH}.deb" \
     \
-    && CHRONOGRAF="1.9.4" \
     && curl -J -L -o /tmp/chronograf.deb \
-        "https://dl.influxdata.com/chronograf/releases/chronograf_${CHRONOGRAF}_${ARCH}.deb" \
+        "https://dl.influxdata.com/chronograf/releases/chronograf_${CHRONOGRAF_VERSION}_${ARCH}.deb" \
     \
-    && KAPACITOR="1.5.9-1" \
     && curl -J -L -o /tmp/kapacitor.deb \
-        "https://dl.influxdata.com/kapacitor/releases/kapacitor_${KAPACITOR}_${ARCH}.deb" \
+        "https://dl.influxdata.com/kapacitor/releases/kapacitor_${KAPACITOR_VERSION}_${ARCH}.deb" \
     \
     && dpkg --install /tmp/influxdb.deb \
     && dpkg --install /tmp/chronograf.deb \
