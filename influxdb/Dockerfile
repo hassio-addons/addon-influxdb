@@ -15,7 +15,7 @@ RUN \
     && apt-get install -y --no-install-recommends \
         libnginx-mod-http-lua=1.18.0-6.1 \
         luarocks=2.4.2+dfsg-1.1 \
-        nginx=1.18.0-6.1 \
+        nginx=1.18.0-6.1+deb11u3 \
         procps=2:3.3.17-5 \
     \
     && luarocks install lua-resty-http 0.15-0 \
