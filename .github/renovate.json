@@ -23,7 +23,7 @@
       ],
       "versioningTemplate": "deb",
       "datasourceTemplate": "repology",
-      "depNameTemplate": "debian_11/{{{replace 'openssh-client' 'openssh' package}}}"
+      "depNameTemplate": "debian_11/{{{replace 'libnginx-mod-http-lua' 'nginx' package}}}"
     }
   ],
   "packageRules": [
@@ -39,6 +39,12 @@
       "groupName": "Add-on base image",
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "groupName": "NGINX",
+      "matchDatasources": ["repology"],
+      "matchPackagePatterns": ["^debian_.*/.*nginx.*"],
       "automerge": true
     }
   ]
