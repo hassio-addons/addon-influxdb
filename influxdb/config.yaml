@@ -16,7 +16,6 @@ arch:
   - aarch64
   - amd64
   - armv7
-  - i386
 init: false
 map:
   - share:rw
