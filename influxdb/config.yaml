@@ -31,6 +31,7 @@ ports_description:
 auth_api: true
 options:
   auth: true
+  influxd_local_only: false
   reporting: true
   ssl: true
   certfile: fullchain.pem
@@ -39,6 +40,7 @@ options:
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   auth: bool
+  influxd_local_only: bool
   reporting: bool
   ssl: bool
   certfile: str

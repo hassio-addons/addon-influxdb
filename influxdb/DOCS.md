@@ -69,6 +69,12 @@ Enable or disable InfluxDB user authentication.
 
 **Note**: _Turning this off is NOT recommended!_
 
+### Option: `influxd_local_only`
+
+Restricts InfluxDB HTTP port to only loopback (localhost) connections.
+
+**Note**: _It's recommended to turn this on since SSL isn't in use now._
+
 ### Option: `reporting`
 
 This option allows you to disable the reporting of usage data to InfluxData.
