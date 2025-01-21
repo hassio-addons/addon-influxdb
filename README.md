@@ -32,10 +32,10 @@ often used in combination with Grafana to visualize the data.
 
 ![Chronograf in the Home Assistant Frontend](images/screenshot.png)
 
-This add-on comes with Chronograf & Kapacitor pre-installed as well. Which
-gives you a nice InfluxDB admin interface for managing your users, databases,
-data retention settings, and lets you peek inside the database using the
-Data Explorer.
+This add-on comes with Chronograf & Kapacitor pre-installed. These provide a
+nice InfluxDB admin interface for managing your users, databases, data
+retention settings, and let you peek inside the database using the Data
+Explorer.
 
 [:books: Read the full add-on documentation][docs]
 
