@@ -5,8 +5,9 @@
   "labels": ["dependencies", "no-stale"],
   "commitMessagePrefix": "⬆️",
   "commitMessageTopic": "{{depName}}",
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$", "/build.yaml$"],
       "matchStringsStrategy": "any",
       "matchStrings": [
@@ -16,6 +17,7 @@
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStringsStrategy": "any",
       "matchStrings": [
@@ -44,8 +46,8 @@
     {
       "groupName": "NGINX",
       "matchDatasources": ["repology"],
-      "matchPackagePatterns": ["^debian_.*/.*nginx.*"],
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": ["/^debian_.*/.*nginx.*/"]
     }
   ]
 }
