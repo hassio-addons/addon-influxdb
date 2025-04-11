@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG BUILD_ARCH=amd64
 ARG INFLUXDB_VERSION="1.8.10"
 ARG CHRONOGRAF_VERSION="1.10.2"
-ARG KAPACITOR_VERSION="1.5.9-1"
+ARG KAPACITOR_VERSION="1.6.6"
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
