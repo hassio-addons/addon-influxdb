@@ -29,6 +29,8 @@ ports_description:
   8086/tcp: InfluxDB server
   8088/tcp: RPC service for backup and restore
 auth_api: true
+ulimits:
+  nofile: 65535
 options:
   auth: true
   reporting: true
