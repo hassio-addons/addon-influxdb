@@ -38,7 +38,7 @@ reporting: true
 ssl: true
 certfile: fullchain.pem
 keyfile: privkey.pem
-nofile: 65536
+nofile_soft_limit: 65536
 envvars:
   - name: INFLUXDB_HTTP_LOG_ENABLED
     value: "true"
