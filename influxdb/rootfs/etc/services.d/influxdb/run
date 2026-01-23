@@ -5,6 +5,8 @@
 # ==============================================================================
 declare name
 declare value
+declare nofile_soft_limit
+declare nofile_hard_limit
 
 for envvar in $(bashio::config 'envvars|keys'); do
     name=$(bashio::config "envvars[${envvar}].name")
@@ -12,6 +14,27 @@ for envvar in $(bashio::config 'envvars|keys'); do
     bashio::log.debug "Setting Env Variable ${name} to ${value}"
     export "${name}=${value}"
 done
+
+# Set nofile soft limit if configured
+nofile_soft_limit=$(bashio::config 'nofile_soft_limit')
+if [[ -n "${nofile_soft_limit}" && "${nofile_soft_limit}" != "null" && "${nofile_soft_limit}" != "0" ]]; then
+    if [[ "${nofile_soft_limit}" =~ ^[0-9]+$ ]] && (( nofile_soft_limit > 0 )); then
+        nofile_hard_limit=$(ulimit -H -n 2>/dev/null || true)
+        if [[ -n "${nofile_hard_limit}" && "${nofile_hard_limit}" != "unlimited" ]]; then
+            if [[ "${nofile_hard_limit}" =~ ^[0-9]+$ ]] && (( nofile_soft_limit > nofile_hard_limit )); then
+                bashio::log.warning "Requested nofile soft limit ${nofile_soft_limit} exceeds hard limit ${nofile_hard_limit}; clamping to ${nofile_hard_limit}"
+                nofile_soft_limit="${nofile_hard_limit}"
+            fi
+        fi
+
+        bashio::log.info "Setting nofile soft limit to ${nofile_soft_limit}"
+        if ! ulimit -S -n "${nofile_soft_limit}"; then
+            bashio::log.warning "Failed to set nofile soft limit to ${nofile_soft_limit}"
+        fi
+    else
+        bashio::log.warning "Invalid nofile soft limit value '${nofile_soft_limit}'; expected a positive integer"
+    fi
+fi
 
 bashio::log.info 'Starting the InfluxDB...'
 
