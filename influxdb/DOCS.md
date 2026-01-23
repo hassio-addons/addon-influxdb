@@ -101,7 +101,7 @@ The limit for the number of open files for the InfluxDB process.  If left empty
 or 0, the limit will be the default soft limit of the container.
 
 If you are seeing errors in the log like `too many open files` try increasing
-this value. The default value in Home Assistant OS is 1024 and the maximum.
+this value. The default value in Home Assistant OS is 1024 and the maximum
 value is 524,288.
 
 ### Option: `envvars`
