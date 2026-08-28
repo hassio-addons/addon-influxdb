@@ -23,6 +23,14 @@
 
 Scalable datastore for metrics, events, and real-time analytics.
 
+## Deprecation warning
+
+**This add-on is in a deprecated state!**
+
+This add-on is built on InfluxDB 1.x, which InfluxData has end-of-lifed and
+no longer supports. That makes this add-on obsolete; it will not receive any
+updates anymore and has been removed from our add-on store.
+
 ## About
 
 InfluxDB is an open source time series database optimized for high-write-volume.
@@ -126,7 +134,7 @@ SOFTWARE.
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
 [patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
 [patreon]: https://www.patreon.com/frenck
-[project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
+[project-stage-shield]: https://img.shields.io/badge/project%20stage-%20!%20DEPRECATED%20%20%20!-ff0000.svg
 [reddit]: https://reddit.com/r/homeassistant
 [releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-influxdb.svg
 [releases]: https://github.com/hassio-addons/addon-influxdb/releases
